@@ -1,3 +1,14 @@
+### Install with magicbox-kepler-demo
+- clone repo
+- cp .env-sample .env and update values
+- yarn install
+- mkdir ./src/components
+- clone [magicbox-kepler-demo](hub.com/unicef/magicbox-kepler-demo) inside ./src/components
+- Follow readme within magicbox-kepler-demo to change config files within client and server apps and update client/.env
+- cd into ./src/components/magicbox-kepler-demo/server and run yarn install/start
+- run yarn start in root.
+
+
 # MSAL.js (Microsoft Authentication Library for Javascript) + React Sample
 
 - Uses [MSAL.js](https://github.com/AzureAD/microsoft-authentication-library-for-js) to add a Sign in with Microsoft button
