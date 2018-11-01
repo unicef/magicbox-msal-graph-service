@@ -1,4 +1,7 @@
 # See https://help.github.com/ignore-files/ for more about ignoring files.
+/auth/.env
+/auth/node_modules
+/server
 .env
 ./magicbox-kepler-demo
 # dependencies
