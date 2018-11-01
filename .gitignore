@@ -3,7 +3,7 @@
 ./magicbox-kepler-demo
 # dependencies
 /node_modules
-
+/src/components
 # testing
 /coverage
 
