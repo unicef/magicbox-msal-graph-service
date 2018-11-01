@@ -1,0 +1,19 @@
+version: '3'
+services:
+  auth:
+    build: ./auth
+    volumes:
+    - ./auth:/opt/app
+    - ./opt/app/node_modules
+    ports:
+    - 3000:3000
+    links:
+    - server
+
+  server:
+    build: ./server
+    volumes:
+    - ./server:/opt/app
+    - ./opt/app/node_modules
+    ports:
+    - 5000:5000
