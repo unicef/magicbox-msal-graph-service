@@ -1,9 +1,9 @@
 ### Install with magicbox-kepler-demo
 - clone repo
-- cp .env-sample .env and update values
-- yarn install
-- mkdir ./src/components
-- clone [magicbox-kepler-demo](hub.com/unicef/magicbox-kepler-demo) inside ./src/components
+- cd auth, cp .env-sample .env and update values
+- mkdir ./auth/src/components
+- clone [magicbox-kepler-demo](hub.com/unicef/magicbox-kepler-demo) inside ./auth/src/components
+- in root: mv ./auth/src/components/magicbox-kepler-demo/server .
 - Follow readme within magicbox-kepler-demo to change config files within client and server apps and update client/.env
 - cd into ./src/components/magicbox-kepler-demo/server and run yarn install/start
 - run yarn start in root.
