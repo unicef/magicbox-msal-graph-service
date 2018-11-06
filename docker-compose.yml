@@ -11,7 +11,7 @@ services:
     - localhost
 
   localhost:
-    build: ./localhost
+    build: ./server
     volumes:
     - ./server:/opt/app
     - ./opt/app/node_modules
