@@ -8,10 +8,10 @@ services:
     ports:
     - 3000:3000
     links:
-    - server
+    - localhost
 
-  server:
-    build: ./server
+  localhost:
+    build: ./localhost
     volumes:
     - ./server:/opt/app
     - ./opt/app/node_modules

@@ -111,9 +111,9 @@ class App extends Component {
 
         return s
       }, '?')
-      console.log(profile)
+
       templates.push(
-        <App1 />
+        <App1 user={this.state.user}/>
       );
     }
     if (this.state.loginFailed) {
