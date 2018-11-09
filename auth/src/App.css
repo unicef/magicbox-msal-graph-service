@@ -1,32 +1,138 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
-
 .App-header {
-  background-color: #222;
-  height: 150px;
+  background-color: #0068EA;
+  height: 100px;
   padding: 20px;
   color: white;
 }
 
 .App-title {
-  font-size: 1.5em;
+  font-size: 2.5em;
+  font-family: Monserrat, sans-serif;
+  text-align: center;
 }
 
-.App-intro {
-  font-size: large;
+.App-nav {
+  list-style-type: none;
+  position: sticky;
+  top: 0;
+  background: #0068EA;
+  width: 100%;
+  text-align: center;
+  padding: 10px;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.App-container {
+  max-width: 700px;
+  min-width: 400px;
+  padding-top: 20px;
+  margin: 0 auto;
+  font-family: Source Sans Pro, sans-serif;
+  text-align: left;
 }
 
-button {
-  margin: 30px;
+a.in-text {
+  color: black;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+a.in-text:hover,
+a.in-text:active {
+  color: #0068EA;
+  transition: 0.5s;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+a.nav:hover,
+a.nav:active {
+  color: #FFD740;
+  transition: 0.6s;
+  text-decoration: none;
+}
+
+a.nav {
+  text-align: center;
+  color: white;
+  font-size: 16px;
+  padding: 25px 15px;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.button {
+  background-color: #0068EA;
+  color: #ffffff;
+  font-size: 12px;
+  padding:10px;
+  font-family: Monserrat, sans-serif;
+  border: none;
+}
+
+.button:hover {
+  background-color: #00AEFF;
+  color: #ffffff;
+  font-size: 12px;
+  padding:10px;
+  font-family: Monserrat, sans-serif;
+  border: none;
+  transition: 0.6s
+}
+
+.contact-form {
+  text-align: center;
+}
+
+.contact-form-input {
+  margin: 5px;
+}
+
+li.nav {
+  display: inline;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+}
+
+@media screen and (max-width: 600px) and (min-width: 401px){
+    .container {
+      max-width: 400px;
+      padding: 20px;
+    }
+
+    .App-header {
+      background-color: #0068EA;
+      height: 80px;
+      padding: 10px;
+      color: white;
+      font-size: 18px;
+    }
+
+    li.nav {
+      display: block;
+      font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .container {
+      max-width: 380px;
+      min-width: 300px;
+      padding: 10px;
+    }
+
+    .App-header {
+      background-color: #0068EA;
+      height: 80px;
+      padding: 10px;
+      color: white;
+      font-size: 18px;
+    }
+
+    li.nav {
+      display: block;
+      font-size: 14px;
+    }
 }

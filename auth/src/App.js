@@ -4,7 +4,8 @@ import './App.css';
 
 import AuthService from './services/auth.service';
 import GraphService from './services/graph.service';
-import App1 from './components/magicbox-kepler-demo/client/src/app';
+import App1 from './components/magicbox-kepler-demo/client/src/app'
+
 require('dotenv').config()
 class App extends Component {
   constructor() {
@@ -15,7 +16,8 @@ class App extends Component {
       user: null,
       userInfo: null,
       apiCallFailed: false,
-      loginFailed: false
+      loginFailed: false,
+      value: ''
     };
   }
   componentWillMount() {}
@@ -77,15 +79,24 @@ class App extends Component {
     );
   };
 
+  handleChange = (event) => {
+    this.setState({value: event.target.value});
+  }
+
+  handleSubmit= (event) =>  {
+    alert('A name was submitted: ' + this.state.value);
+    event.preventDefault();
+  }
+
   render() {
     let templates = [];
     if (this.state.user) {
       templates.push(
         <div key="loggedIn">
           <button onClick={this.callAPI} type="button">
-            Call Graphs /me API
+            Visit Magic Box Maps
           </button>
-          <button onClick={this.logout} type="button">
+          <button onClick={this.logout} className="App-nav">
             Logout
           </button>
           <h3>Hello {this.state.user.name}</h3>
@@ -93,11 +104,9 @@ class App extends Component {
       );
     } else {
       templates.push(
-        <div key="loggedIn">
-          <button onClick={this.login} type="button">
-            Login with Microsoft
-          </button>
-        </div>
+          <a className="nav" onClick={this.login} key="loggedIn">
+            UNICEF Login
+          </a>
       );
     }
     if (this.state.userInfo) {
@@ -127,10 +136,33 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">React app with MSAL.js</h1>
+          <h1 className="App-title">Magic Box Maps</h1>
         </header>
-        {templates}
+          <ul className="App-nav">
+            <li className="nav">{templates}</li>
+            <li className="nav"><a className="nav" href="#">For Developers</a></li>
+            <li className="nav"><a className="nav" href="#">Contact Us</a></li>
+          </ul>
+        <div className="App-container">
+        <h4>What is Magic Box?</h4>
+        <p>Magic Box is a platform for Big Data at UNICEF Innovation and is the work of data scientists, software engineers, designers, and researchers in NYHQ and Programme Offices, along with academic and private partnerships.</p>
+        <h4>The Magic Box Toolkit</h4>
+        <p>Currently, users can create and share maps that provide insights for allocating resources, infrastructure planning, and emergency preparedness and response. <a onClick={this.login} key="loggedIn" className="in-text">Log in</a> with your UNICEF credentials to access the Magic Box Maps map creation interface.</p>
+        <h4>Why Big Data?</h4>
+        <p>Data captures many different parts of human behavior, mobility, and environmental patterns. We can use data to shape responses to disasters, epidemics, and other challenges, by telling those involved in the response:</p>
+          <ul>
+                <li>Where to focus their limited resources;</li>
+                <li>How people who are most at risk are thinking about a threat;</li>
+                <li>What information to provide to affected populations;</li>
+                <li>and ways to proactively inform vital work to protect vulnerable children.</li>
+          </ul>
+        <p>It also allows us to link this information to governments and other partners for real-time situational awareness and problem-solving.</p>
+          <form onSubmit={this.handleSubmit} className="contact-form">
+            <h4>Want to learn more about our project or working with us? Get in touch.</h4>
+            <input type="text" value={this.state.value} onChange={this.handleChange}  placeholder="Email Address" className="contact-form-input" required/>
+            <input type="submit" value="I'm interested" className="button"/>
+          </form>
+        </div>
       </div>
     );
   }
