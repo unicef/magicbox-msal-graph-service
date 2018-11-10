@@ -1,6 +1,4 @@
 #!/bin/bash
-git checkout docker-landing
-
 echo Adding magicbox-kepler-demo repository
 
 cd auth/src/components || exit echo Sorry, something went wrong. Please try again.
