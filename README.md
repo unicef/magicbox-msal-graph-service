@@ -1,7 +1,9 @@
 ### Install with magicbox-kepler-demo
 - clone repo
+- git checkout docker-landing
 - run `bash setup.sh` on master branch
-- make any necessary changes/updates to your .env file
+- make any necessary changes/updates to ./auth.env file
+- make any necessary changes/updates to ./server/azure/.env file
 
 # MSAL.js (Microsoft Authentication Library for Javascript) + React Sample
 
