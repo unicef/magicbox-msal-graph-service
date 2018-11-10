@@ -1,5 +1,5 @@
 #!/bin/bash
-git checkout docker
+git checkout docker-landing
 
 echo Adding magicbox-kepler-demo repository
 
