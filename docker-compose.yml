@@ -16,4 +16,4 @@ services:
     - ./server:/opt/app
     - ./opt/app/node_modules
     ports:
-    - 5000:5000
+    - 5000
