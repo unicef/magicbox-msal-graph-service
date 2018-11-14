@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 import AuthService from './services/auth.service';
@@ -16,8 +15,7 @@ class App extends Component {
       user: null,
       userInfo: null,
       apiCallFailed: false,
-      loginFailed: false,
-      value: ''
+      loginFailed: false
     };
   }
   componentWillMount() {}
@@ -79,34 +77,59 @@ class App extends Component {
     );
   };
 
-  handleChange = (event) => {
-    this.setState({value: event.target.value});
-  }
-
-  handleSubmit= (event) =>  {
-    alert('A name was submitted: ' + this.state.value);
-    event.preventDefault();
-  }
-
   render() {
     let templates = [];
     if (this.state.user) {
       templates.push(
         <div key="loggedIn">
-          <button onClick={this.callAPI} type="button">
-            Visit Magic Box Maps
-          </button>
-          <button onClick={this.logout} className="App-nav">
-            Logout
-          </button>
-          <h3>Hello {this.state.user.name}</h3>
+          <ul className="App-nav">
+            <li className="nav"><a className="nav" onClick={this.callAPI}>Visit Magic Box Maps</a></li>
+            <li className="spacer">|</li>
+            <li className="nav"><a className="nav" onClick={this.logout}>Logout</a></li>
+          </ul>
         </div>
       );
     } else {
       templates.push(
-          <a className="nav" onClick={this.login} key="loggedIn">
-            UNICEF Login
-          </a>
+        <div>
+          <div key="loggedIn">
+            <ul className="App-nav">
+              <li className="nav"><a className="nav" onClick={this.login}>Log In</a></li>
+            </ul>
+          </div>
+          <div className="App-container">
+            <div className="App-container-div-1">
+              <div className="App-sub-container">
+              <h4>What is Magic Box?</h4>
+              <p className="quote-callout">The UNICEF Innovation big data platform </p>
+              <p className="align-right"> It is the work of data scientists, software engineers, designers, and researchers <br></br>
+              in NYHQ and Programme Offices, along with academic and private partnerships.</p>
+              </div>
+            </div>
+            <div className="App-container-div-2">
+              <div className="App-sub-container">
+              <h4 className="text-white">The Magic Box Toolkit</h4>
+              <p className="quote-callout">
+                <p className="align-left">Use our mapping tool to generate insights for allocating resources, infrastructure planning, and emergency preparedness and response.</p>
+              </p>
+              <button onClick={this.login} key="loggedIn" className="btn-log-in">Log in → </button>
+              </div>
+            </div>
+            <div className="App-container-div-1">
+              <div className="App-sub-container">
+              <h4>Why Big Data?</h4>
+              <p>Data captures many different parts of human behavior, mobility, and environmental patterns. We can use data to shape responses to disasters, epidemics, and other challenges, by telling those involved in the response:</p>
+                <ul>
+                      <li>Where to focus their limited resources;</li>
+                      <li>How people who are most at risk are thinking about a threat;</li>
+                      <li>What information to provide to affected populations;</li>
+                      <li>and ways to proactively inform vital work to protect vulnerable children.</li>
+                </ul>
+              <p>It also allows us to link this information to governments and other partners for real-time situational awareness and problem-solving.</p>
+              </div>
+            </div>
+          </div>
+        </div>
       );
     }
     if (this.state.userInfo) {
@@ -138,31 +161,7 @@ class App extends Component {
         <header className="App-header">
           <h1 className="App-title">Magic Box Maps</h1>
         </header>
-          <ul className="App-nav">
-            <li className="nav">{templates}</li>
-            <li className="nav"><a className="nav" href="#">For Developers</a></li>
-            <li className="nav"><a className="nav" href="#">Contact Us</a></li>
-          </ul>
-        <div className="App-container">
-        <h4>What is Magic Box?</h4>
-        <p>Magic Box is a platform for Big Data at UNICEF Innovation and is the work of data scientists, software engineers, designers, and researchers in NYHQ and Programme Offices, along with academic and private partnerships.</p>
-        <h4>The Magic Box Toolkit</h4>
-        <p>Currently, users can create and share maps that provide insights for allocating resources, infrastructure planning, and emergency preparedness and response. <a onClick={this.login} key="loggedIn" className="in-text">Log in</a> with your UNICEF credentials to access the Magic Box Maps map creation interface.</p>
-        <h4>Why Big Data?</h4>
-        <p>Data captures many different parts of human behavior, mobility, and environmental patterns. We can use data to shape responses to disasters, epidemics, and other challenges, by telling those involved in the response:</p>
-          <ul>
-                <li>Where to focus their limited resources;</li>
-                <li>How people who are most at risk are thinking about a threat;</li>
-                <li>What information to provide to affected populations;</li>
-                <li>and ways to proactively inform vital work to protect vulnerable children.</li>
-          </ul>
-        <p>It also allows us to link this information to governments and other partners for real-time situational awareness and problem-solving.</p>
-          <form onSubmit={this.handleSubmit} className="contact-form">
-            <h4>Want to learn more about our project or working with us? Get in touch.</h4>
-            <input type="text" value={this.state.value} onChange={this.handleChange}  placeholder="Email Address" className="contact-form-input" required/>
-            <input type="submit" value="I'm interested" className="button"/>
-          </form>
-        </div>
+        {templates}
       </div>
     );
   }
