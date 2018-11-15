@@ -120,6 +120,8 @@ class App extends Component {
 
         return s
       }, '?')
+      console.log(this.state)
+      console.log('___')
       templates.push(
         <App1 idToken={this.state.user.idToken}/>
       );
