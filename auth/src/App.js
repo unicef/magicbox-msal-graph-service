@@ -63,6 +63,7 @@ class App extends Component {
           this.setState({
             user: user
           });
+        this.callAPI()
         } else {
           this.setState({
             loginFailed: true
@@ -74,7 +75,7 @@ class App extends Component {
           loginFailed: true
         });
       }
-    );
+    )
   };
 
   render() {
@@ -82,40 +83,41 @@ class App extends Component {
     if (this.state.user) {
       templates.push(
         <div key="loggedIn">
-          <ul className="App-nav">
-            <li className="nav"><a className="nav" onClick={this.callAPI}>Visit Magic Box Maps</a></li>
-            <li className="spacer">|</li>
-            <li className="nav"><a className="nav" onClick={this.logout}>Logout</a></li>
-          </ul>
+        <header className="App-header">
+        <ul>
+          <li className="nav-header"><img src={require('./logo_primary_white.png')} /></li>
+          <li className="nav-header"> Magicbox maps</li>
+          <li className="nav-link"><a className="nav" onClick={this.logout}>Log Out</a></li>
+        </ul>
+        </header>
         </div>
       );
     } else {
       templates.push(
         <div>
           <div key="loggedIn">
-            <ul className="App-nav">
-              <li className="nav"><a className="nav" onClick={this.login}>Log In</a></li>
-            </ul>
+          <header className="App-header">
+          <ul>
+            <li className="nav-header"><img src={require('./logo_primary_white.png')} /></li>
+            <li className="nav-header"> Magicbox maps</li>
+            <li className="nav-link"><a className="nav" onClick={this.login}>Log In</a></li>
+          </ul>
+          </header>
           </div>
           <div className="App-container">
             <div className="App-container-div-1">
               <div className="App-sub-container">
-              <h4>What is Magic Box?</h4>
-              <p className="quote-callout">The UNICEF Innovation big data platform </p>
-              <p className="align-right"> It is the work of data scientists, software engineers, designers, and researchers <br></br>
-              in NYHQ and Programme Offices, along with academic and private partnerships.</p>
+              <h1> Magicbox, the UNICEF Innovation Big Data platform, is the work of data scientists, software engineers, designers, and researchers
+              in NYHQ and Programme Offices, along with academic and private partnerships.</h1>
               </div>
             </div>
             <div className="App-container-div-2">
               <div className="App-sub-container">
-              <h4 className="text-white">The Magic Box Toolkit</h4>
-              <p className="quote-callout">
+              <h4>Magicbox maps</h4>
                 <p className="align-left">Use our mapping tool to generate insights for allocating resources, infrastructure planning, and emergency preparedness and response.</p>
-              </p>
-              <button onClick={this.login} key="loggedIn" className="btn-log-in">Log in → </button>
               </div>
             </div>
-            <div className="App-container-div-1">
+            <div className="App-container-div-2">
               <div className="App-sub-container">
               <h4>Why Big Data?</h4>
               <p>Data captures many different parts of human behavior, mobility, and environmental patterns. We can use data to shape responses to disasters, epidemics, and other challenges, by telling those involved in the response:</p>
@@ -148,19 +150,8 @@ class App extends Component {
         <App1 user={this.state.user}/>
       );
     }
-    if (this.state.loginFailed) {
-      templates.push(<strong key="loginFailed">Login unsuccessful</strong>);
-    }
-    if (this.state.apiCallFailed) {
-      templates.push(
-        <strong key="apiCallFailed">Graph API call unsuccessful</strong>
-      );
-    }
     return (
       <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">Magic Box Maps</h1>
-        </header>
         {templates}
       </div>
     );
