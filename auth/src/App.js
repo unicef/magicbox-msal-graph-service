@@ -120,9 +120,8 @@ class App extends Component {
 
         return s
       }, '?')
-
       templates.push(
-        <App1 user={this.state.user}/>
+        <App1 idToken={this.state.user.idToken}/>
       );
     }
     if (this.state.loginFailed) {
