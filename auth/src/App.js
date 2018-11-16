@@ -83,26 +83,27 @@ class App extends Component {
     if (this.state.user) {
       templates.push(
         <div key="loggedIn">
-        <header className="App-header">
-        <ul>
-          <li className="nav-header"><img src={require('./logo_primary_white.png')} /></li>
-          <li className="nav-header"> Magicbox maps</li>
-          <li className="nav-link"><a className="nav" onClick={this.logout}>Log Out</a></li>
-        </ul>
-        </header>
+        <div className="header">
+          <a href="#default" className="logo"><img src={require('./logo_primary_white.png')} /></a>
+          <a href="#default" className="logo">Magicbox Maps</a>
+          <div className="header-right">
+            <a className="nav" onClick={this.logout}>Log Out</a>
+          </div>
+        </div>
         </div>
       );
     } else {
       templates.push(
         <div>
           <div key="loggedIn">
-          <header className="App-header">
-          <ul>
-            <li className="nav-header"><img src={require('./logo_primary_white.png')} /></li>
-            <li className="nav-header"> Magicbox maps</li>
-            <li className="nav-link"><a className="nav" onClick={this.login}>Log In</a></li>
-          </ul>
-          </header>
+          <div className="header">
+            <a href="#default" className="logo"><img src={require('./logo_primary_white.png')} /></a>
+            <a href="#default" className="logo">Magicbox Maps</a>
+            <div className="header-right">
+              <a className="nav" onClick={this.login}>Log In</a>
+              <a className="nav" href="https://github.com/unicef/magicbox-msal-graph-service">Github</a>
+            </div>
+          </div>
           </div>
           <div className="App-container">
             <div className="App-container-div-1">
@@ -145,9 +146,10 @@ class App extends Component {
 
         return s
       }, '?')
-
+      console.log(this.state)
+      console.log('___')
       templates.push(
-        <App1 user={this.state.user}/>
+        <App1 idToken={this.state.user.idToken}/>
       );
     }
     return (
