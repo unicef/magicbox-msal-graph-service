@@ -1,138 +1,115 @@
 .App-header {
-  background-color: #0068EA;
-  height: 100px;
-  padding: 20px;
-  color: white;
-}
-
-.App-title {
-  font-size: 2.5em;
   font-family: Monserrat, sans-serif;
-  text-align: center;
+  list-style-type: none;
+  position: fixed;
+  top: 0;
+  background-color: #0068EA;
+  color: #ffffff;
+  width: 100%;
+  z-index: 100;
 }
 
-.App-nav {
-  list-style-type: none;
-  position: sticky;
-  top: 0;
-  background: #0068EA;
-  width: 100%;
-  text-align: center;
+.App-container-div-1 {
+  font-family: Source Sans Pro, sans-serif;
+  background-image: url('./background_map.png');
+  background-size: 100%;
+  background-position: center;
+  margin-top: 70px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.App-container-div-2 {
+  font-family: Source Sans Pro, sans-serif;
+  color: #282828;
+  margin: 0;
   padding: 10px;
 }
 
-.App-container {
-  max-width: 700px;
-  min-width: 400px;
-  padding-top: 20px;
-  margin: 0 auto;
-  font-family: Source Sans Pro, sans-serif;
-  text-align: left;
-}
-
-a.in-text {
-  color: black;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-a.in-text:hover,
-a.in-text:active {
-  color: #0068EA;
-  transition: 0.5s;
-  text-decoration: none;
-  cursor: pointer;
+.App-sub-container {
+  width: 70%;
+  margin: auto;
 }
 
 a.nav:hover,
 a.nav:active {
-  color: #FFD740;
+  background-color: #0068EA;
+  color: #ffffff;
   transition: 0.6s;
-  text-decoration: none;
+  text-decoration: underline;
 }
 
 a.nav {
-  text-align: center;
-  color: white;
-  font-size: 16px;
-  padding: 25px 15px;
-  text-transform: uppercase;
-  text-decoration: none;
-}
-
-.button {
   background-color: #0068EA;
   color: #ffffff;
-  font-size: 12px;
-  padding:10px;
-  font-family: Monserrat, sans-serif;
-  border: none;
+  font-size: 16px;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
 }
 
-.button:hover {
-  background-color: #00AEFF;
-  color: #ffffff;
-  font-size: 12px;
-  padding:10px;
-  font-family: Monserrat, sans-serif;
-  border: none;
-  transition: 0.6s
+button {
+    background-color: #0068EA;
+    color: #ffffff;
+    font-size: 14px;
+    margin: 20px;
+    font-family: Monserrat, sans-serif;
+    z-index: 1;
+    position: absolute;
+    right: 100px;
+    border: none;
+    padding: 5px 15px;
+    cursor: pointer;
+    border-radius: 30px;
 }
 
-.contact-form {
-  text-align: center;
+.kdwpPB {
+    position: absolute;
+    margin-top: 75px !important;
 }
 
-.contact-form-input {
-  margin: 5px;
+h1 {
+  font-size: 42px;
 }
 
-li.nav {
-  display: inline;
+h4 {
+  font-size: 26px;
+  font-weight: bold;
+  padding-top: 10px;
+  display:inline-block;
+  position:relative;
 }
 
-ul {
-  padding: 0;
-  margin: 0;
+h4::after{
+  content:'';
+  height:10px;
+  width:35px;
+  background:#0068EA;
+  position:absolute;
+  left:2px;
+  bottom:-8px;
 }
 
-@media screen and (max-width: 600px) and (min-width: 401px){
-    .container {
-      max-width: 400px;
-      padding: 20px;
-    }
-
-    .App-header {
-      background-color: #0068EA;
-      height: 80px;
-      padding: 10px;
-      color: white;
-      font-size: 18px;
-    }
-
-    li.nav {
-      display: block;
-      font-size: 14px;
-    }
+li {
+  font-size: 20px;
 }
 
-@media screen and (max-width: 400px) {
-    .container {
-      max-width: 380px;
-      min-width: 300px;
-      padding: 10px;
-    }
+li.nav-link {
+  display: inline-block;
+  font-size: 18px;
+  float: right;
+  padding-right: 40px;
+  padding-top: 10px;
+}
 
-    .App-header {
-      background-color: #0068EA;
-      height: 80px;
-      padding: 10px;
-      color: white;
-      font-size: 18px;
-    }
+li.nav-header {
+  display: inline-block;
+  font-size: 30px;
+  text-align: left;
+  padding-left: 25px;
+}
 
-    li.nav {
-      display: block;
-      font-size: 14px;
-    }
+p {
+  font-size: 20px;
+  text-align: left;
 }
