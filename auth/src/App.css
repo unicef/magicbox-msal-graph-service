@@ -47,6 +47,13 @@ a.nav {
   text-decoration: none;
   cursor: pointer;
 }
+.overlay-buttons {
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  width: 320px;
+
+}
 
 button {
     background-color: #0068EA;
