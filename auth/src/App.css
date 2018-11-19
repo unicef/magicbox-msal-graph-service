@@ -45,7 +45,8 @@ button {
     font-family: Monserrat, sans-serif;
     z-index: 1;
     position: absolute;
-    right: 100px;
+    right: 20px;
+    bottom: 20px;
     border: none;
     padding: 5px 15px;
     cursor: pointer;
@@ -115,7 +116,7 @@ button {
 
   .kdwpPB {
       position: absolute;
-      margin-top: 190px !important;
+      margin-top: 170px !important;
   }
 
   h1 {
