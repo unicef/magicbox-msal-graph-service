@@ -6,11 +6,11 @@ export default class AuthService {
     if (window.location.hostname !== '127.0.0.1') {
       redirectUri = PROD_REDIRECT_URI;
     }
-
+    
     this.applicationConfig = {
       clientID: process.env.REACT_APP_CLIENT_ID,
       authority: process.env.REACT_APP_AUTHORITY,
-      graphScopes: ['user.read']
+      graphScopes: [process.env.REACT_APP_SCOPES]
     };
     this.app = new Msal.UserAgentApplication(
       this.applicationConfig.clientID,

@@ -3,7 +3,7 @@
 /auth/node_modules
 /server
 .env
-./magicbox-kepler-demo
+magicbox-kepler-demo
 # dependencies
 /node_modules
 /src/components
