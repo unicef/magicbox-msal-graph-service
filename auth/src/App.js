@@ -87,7 +87,7 @@ class App extends Component {
           <a href="#default" className="logo"><img src={require('./logo_primary_white.png')} /></a>
           <a href="#default" className="logo">Magicbox Maps</a>
           <div className="header-right">
-            <a className="nav" onClick={this.logout}>Log Out</a>
+            <a className="nav" id="logOut" onClick={this.logout}>Log Out</a>
           </div>
         </div>
         </div>
@@ -136,20 +136,8 @@ class App extends Component {
       );
     }
     if (this.state.userInfo) {
-        // <pre key="userInfo">{JSON.stringify(this.state.userInfo, null, 4)}</pre>
-      let user_profile = this.state.userInfo
-      let profile = Object.keys(user_profile).reduce((s, k) => {
-        console.log(k)
-        if (!k.match(/\@/)) {
-          s +=  k + '=' + user_profile[k] + '&'
-        }
-
-        return s
-      }, '?')
-      console.log(this.state)
-      console.log('___')
       templates.push(
-        <App1 idToken={this.state.user.idToken}/>
+        <App1 user={this.state.user}/>
       );
     }
     return (

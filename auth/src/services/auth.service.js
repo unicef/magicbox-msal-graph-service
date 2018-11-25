@@ -1,4 +1,5 @@
 import * as Msal from 'msal';
+import config from '../config'
 export default class AuthService {
   constructor() {
     let PROD_REDIRECT_URI = process.env.REACT_APP_REPLY_URL;
@@ -6,7 +7,7 @@ export default class AuthService {
     if (window.location.hostname !== '127.0.0.1') {
       redirectUri = PROD_REDIRECT_URI;
     }
-    
+
     this.applicationConfig = {
       clientID: process.env.REACT_APP_CLIENT_ID,
       authority: process.env.REACT_APP_AUTHORITY,
@@ -26,9 +27,9 @@ export default class AuthService {
   login = () => {
     return this.app.loginPopup(this.applicationConfig.graphScopes).then(
       idToken => {
-        console.log(idToken)
         const user = this.app.getUser();
         if (user) {
+          user.tokenStr = idToken
           return user;
         } else {
           return null;
