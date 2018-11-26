@@ -6,7 +6,6 @@ import document from 'global/document';
 import {Provider} from 'react-redux';
 import {hashHistory, Router, Route} from 'react-router';
 import {syncHistoryWithStore} from 'react-router-redux';
-import {render} from 'react-dom';
 import store from './components/magicbox-kepler-demo/client/src/store';
 import registerServiceWorker from './registerServiceWorker';
 

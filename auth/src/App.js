@@ -84,7 +84,7 @@ class App extends Component {
       templates.push(
         <div key="loggedIn">
         <div className="header">
-          <a href="#default" className="logo"><img src={require('./logo_primary_white.png')} /></a>
+          <a href="#default" className="logo"><img alt="Logo for UNICEF innovation unit" src={require('./logo_primary_white.png')} /></a>
           <a href="#default" className="logo">Magicbox Maps</a>
           <div className="header-right">
             <a className="nav" id="logOut" onClick={this.logout}>Log Out</a>
@@ -97,7 +97,7 @@ class App extends Component {
         <div>
           <div key="loggedIn">
           <div className="header">
-            <a href="#default" className="logo"><img src={require('./logo_primary_white.png')} /></a>
+            <a href="#default" className="logo"><img alt="Logo for UNICEF innovation unit" src={require('./logo_primary_white.png')} /></a>
             <a href="#default" className="logo">Magicbox Maps</a>
             <div className="header-right">
               <a className="nav" onClick={this.login}>Log In</a>
