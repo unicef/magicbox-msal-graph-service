@@ -2,8 +2,17 @@
 - clone repo
 - git checkout docker-landing
 - run `bash setup.sh` on master branch
-- make any necessary changes/updates to ./auth.env file
-- make any necessary changes/updates to ./server/azure/.env file
+- make any necessary changes/updates to
+	- ./auth.env file
+	- ./server/config.js
+	- ./server/azure/.env file
+- docker-compose up
+
+If running on localhost:
+- In docker-compose.yaml change 443 to 3000
+- In ./auth/package.json remove HTTPS=true in `"start": "HTTPS=true react-scripts start",`
+
+
 
 # MSAL.js (Microsoft Authentication Library for Javascript) + React Sample
 
