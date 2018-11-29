@@ -12,6 +12,7 @@ If running on localhost:
 - In docker-compose.yaml change 443 to 3000
 - In ./auth/package.json remove HTTPS=true in `"start": "HTTPS=true react-scripts start",`
 
+#### Screenshot
 ![Alt text](./screenshot.png)
 
 # MSAL.js (Microsoft Authentication Library for Javascript) + React Sample
