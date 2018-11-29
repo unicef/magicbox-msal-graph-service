@@ -1,4 +1,4 @@
-### Install with magicbox-kepler-demo
+### Install with [magicbox-kepler-app](https://github.com/unicef/magicbox-kepler-app)
 - clone repo
 - git checkout docker-landing
 - run `bash setup.sh` on master branch
