@@ -1,0 +1,12 @@
+{
+  "userInValid": {
+    "idToken": {
+      "email" : "joe@notwhitelisted.components"
+    }
+  },
+  "userValid": {
+    "idToken": {
+      "email" : "joe@whitelisted.components"
+    }
+  }
+}
