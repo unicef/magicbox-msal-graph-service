@@ -90,8 +90,9 @@ class App extends Component {
   }
 
   render() {
+    // console.log("auth token", this.authService.getToken().id)
     let templates = [];
-    if (this.state.user && config.whiteListedDomains[this.state.user.idToken.email.split('@')[1]]) {
+    if (this.authService.getToken().idToken && config.whiteListedDomains[this.authService.getToken().idToken.email.split('@')[1]]) {
       templates.push(
         <ValidLogin logout={this.logout} />
       );
