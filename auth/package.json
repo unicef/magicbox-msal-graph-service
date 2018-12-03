@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "https://sunilbandla.github.io/react-msal-sample/",
   "dependencies": {
+    "chai": "^4.2.0",
     "d3-request": "^1.0.6",
     "dotenv": "^6.1.0",
     "global": "^4.3.0",
@@ -38,6 +39,9 @@
     "eject": "react-scripts eject"
   },
   "devDependencies": {
-    "gh-pages": "^1.1.0"
+    "enzyme": "^3.7.0",
+    "enzyme-adapter-react-15": "^1.2.0",
+    "gh-pages": "^1.1.0",
+    "jest-localstorage-mock": "^2.3.0"
   }
 }

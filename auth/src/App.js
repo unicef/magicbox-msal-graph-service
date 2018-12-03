@@ -83,26 +83,24 @@ class App extends Component {
   };
 
   redirectHome = () => {
-    console.log("setting state")
     this.setState({
       loginFailed: false
     });
   }
 
   render() {
-    // console.log("auth token", this.authService.getToken().id)
     let templates = [];
     if (this.authService.getToken().idToken && config.whiteListedDomains[this.authService.getToken().idToken.email.split('@')[1]]) {
       templates.push(
-        <ValidLogin logout={this.logout} />
+        <ValidLogin name="valid-login" logout={this.logout} />
       );
     } else if (this.state.loginFailed === true) {
       templates.push(
-      <InvalidLogin login={this.login} redirectHome={this.redirectHome} />
+      <InvalidLogin name="invalid-login" login={this.login} redirectHome={this.redirectHome} />
     );
     } else {
       templates.push(
-      <LandingPage key={'id'} login={this.login}/>
+      <LandingPage name="landing-page" key={'id'} login={this.login}/>
       );
     }
     if (this.state.userInfo) {
