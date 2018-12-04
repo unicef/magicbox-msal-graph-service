@@ -90,9 +90,12 @@ class App extends Component {
 
   render() {
     let templates = [];
-    if (this.authService.getToken().idToken && config.whiteListedDomains[this.authService.getToken().idToken.email.split('@')[1]]) {
+    if (this.state.user) {
       templates.push(
-        <ValidLogin name="valid-login" logout={this.logout} />
+        <div>
+          <ValidLogin name="valid-login" logout={this.logout} />
+          <App1 user={this.state.user}/>
+        </ div>
       );
     } else if (this.state.loginFailed === true) {
       templates.push(
@@ -100,13 +103,8 @@ class App extends Component {
     );
     } else {
       templates.push(
-      <LandingPage name="landing-page" key={'id'} login={this.login}/>
-      );
-    }
-    if (this.state.userInfo) {
-      templates.push(
-        <App1 user={this.state.user}/>
-      );
+        <LandingPage name="landing-page" key={'id'} login={this.login}/>
+      )
     }
     return (
       <div className="App">
