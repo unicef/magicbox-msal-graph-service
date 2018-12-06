@@ -1,7 +1,6 @@
 #!/bin/bash
 echo Adding magicbox-kepler-demo repository
 cp ./auth/.env-sample ./auth/.env
-cp ./auth/config-sample.js ./auth/config.js
 cp ./auth/src/config-sample.js ./auth/src/config.js
 mkdir ./auth/src/components
 cd auth/src/components || exit echo Sorry, something went wrong. Please try again.
