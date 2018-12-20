@@ -6,7 +6,7 @@ services:
     - ./auth:/opt/app
     - /opt/app/node_modules
     ports:
-    - 3000:3000
+    - 443:3000
     links:
     - server
 

@@ -51,9 +51,9 @@ class App extends Component {
     )
   };
 
-  validateToken = (token) => {
+  validateToken = () => {
     let currentToken = this.state.user.tokenStr;
-    const url = 'http://localhost:5000/api/maps/verify';
+    const url = '/api/maps/verify';
       fetch(url, {
         method: 'GET',
         headers: {

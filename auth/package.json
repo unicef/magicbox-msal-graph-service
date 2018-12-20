@@ -12,6 +12,7 @@
     "msal": "^0.2.3",
     "react": "^15.3.1",
     "react-dom": "^15.6.1",
+    "react-ga": "^2.5.6",
     "react-palm": "^1.1.2",
     "react-redux": "^4.4.5",
     "react-router": "^3.0.5",
@@ -30,7 +31,7 @@
     }
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "HTTPS=true react-scripts start",
     "build": "react-scripts build",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
