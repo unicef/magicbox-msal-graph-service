@@ -37,6 +37,10 @@ class App extends Component {
           this.setState({
             user: user
           });
+        this.authService.getToken().then(
+          token => {
+            this.validateToken(token)
+          })
         } else {
           this.setState({
             loginFailed: true
@@ -51,13 +55,12 @@ class App extends Component {
     )
   };
 
-  validateToken = () => {
-    let currentToken = this.state.user.tokenStr;
+  validateToken = (token) => {
     const url = '/api/maps/verify';
       fetch(url, {
         method: 'GET',
         headers: {
-          'x-access-token' : `Bearer ${currentToken}`,
+          'x-access-token' : `Bearer ${token}`,
           'Accept': 'application/json',
           'Content-Type': 'application/json'
         }
@@ -68,21 +71,18 @@ class App extends Component {
 
   render() {
     let templates = [];
-    if (!!this.state.user) {
-      this.validateToken()
-      if (!!this.state.validToken) {
+    if (!!this.state.validToken) {
         templates.push(
           <div>
             <ValidLogin name="valid-login" logout={this.logout} />
             <App1 user={this.state.user}/>
           </div>
         );
-      }
-  } else if (!!this.state.loginFailed) {
+      } else if (!!this.state.loginFailed) {
       templates.push(
         <InvalidLogin name="invalid-login" login={this.login} redirectHome={this.redirectHome} />
       );
-  } else {
+    } else {
       templates.push(
         <LandingPage name="landing-page" login={this.login}/>
       )
