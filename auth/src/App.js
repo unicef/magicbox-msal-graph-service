@@ -3,7 +3,12 @@ import './App.css';
 
 import AuthService from './services/auth.service';
 import GraphService from './services/graph.service';
-import App1 from './components/magicbox-kepler-demo/client/src/app'
+import App1 from './components/magicbox-kepler-demo/client/src/app';
+import InvalidLogin from './components/templates/invalid-login';
+import ValidLogin from './components/templates/valid-login';
+import LandingPage from './components/templates/landing-page';
+import { LoadingSpinner } from 'kepler.gl/components';
+
 
 require('dotenv').config()
 class App extends Component {
@@ -13,41 +18,10 @@ class App extends Component {
     this.graphService = new GraphService();
     this.state = {
       user: null,
-      userInfo: null,
-      apiCallFailed: false,
-      loginFailed: false
+      loginFailed: false,
+      validToken: false
     };
   }
-  componentWillMount() {}
-
-  callAPI = () => {
-    this.setState({
-      apiCallFailed: false
-    });
-    this.authService.getToken().then(
-      token => {
-        this.graphService.getUserInfo(token).then(
-          data => {
-            this.setState({
-              userInfo: data
-            });
-          },
-          error => {
-            console.error(error);
-            this.setState({
-              apiCallFailed: true
-            });
-          }
-        );
-      },
-      error => {
-        console.error(error);
-        this.setState({
-          apiCallFailed: true
-        });
-      }
-    );
-  };
 
   logout = () => {
     this.authService.logout();
@@ -63,7 +37,10 @@ class App extends Component {
           this.setState({
             user: user
           });
-        this.callAPI()
+        this.authService.getToken().then(
+          token => {
+            this.validateToken(token)
+          })
         } else {
           this.setState({
             loginFailed: true
@@ -78,67 +55,37 @@ class App extends Component {
     )
   };
 
+  validateToken = (token) => {
+    const url = '/api/maps/verify';
+      fetch(url, {
+        method: 'GET',
+        headers: {
+          'x-access-token' : `Bearer ${token}`,
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        }
+      })
+        .then(response => (response.json()))
+        .then(response => response.authorized ? this.setState({validToken: true}) : this.setState({loginFailed: true}))
+    };
+
   render() {
     let templates = [];
-    if (this.state.user) {
-      templates.push(
-        <div key="loggedIn">
-        <div className="header">
-          <a href="#default" className="logo"><img src={require('./logo_primary_white.png')} /></a>
-          <a href="#default" className="logo">Magicbox Maps</a>
-          <div className="header-right">
-            <a className="nav" id="logOut" onClick={this.logout}>Log Out</a>
+    if (!!this.state.validToken) {
+        templates.push(
+          <div>
+            <ValidLogin name="valid-login" logout={this.logout} />
+            <App1 user={this.state.user}/>
           </div>
-        </div>
-        </div>
+        );
+      } else if (!!this.state.loginFailed) {
+      templates.push(
+        <InvalidLogin name="invalid-login" login={this.login} redirectHome={this.redirectHome} />
       );
     } else {
       templates.push(
-        <div>
-          <div key="loggedIn">
-          <div className="header">
-            <a href="#default" className="logo"><img src={require('./logo_primary_white.png')} /></a>
-            <a href="#default" className="logo">Magicbox Maps</a>
-            <div className="header-right">
-              <a className="nav" onClick={this.login}>Log In</a>
-              <a className="nav" href="https://github.com/unicef/magicbox-msal-graph-service">Github</a>
-            </div>
-          </div>
-          </div>
-          <div className="App-container">
-            <div className="App-container-div-1">
-              <div className="App-sub-container">
-              <h1> Magicbox, the UNICEF Innovation Big Data platform, is the work of data scientists, software engineers, designers, and researchers
-              in NYHQ and Programme Offices, along with academic and private partnerships.</h1>
-              </div>
-            </div>
-            <div className="App-container-div-2">
-              <div className="App-sub-container">
-              <h4>Magicbox maps</h4>
-                <p className="align-left">Use our mapping tool to generate insights for allocating resources, infrastructure planning, and emergency preparedness and response.</p>
-              </div>
-            </div>
-            <div className="App-container-div-2">
-              <div className="App-sub-container">
-              <h4>Why Big Data?</h4>
-              <p>Data captures many different parts of human behavior, mobility, and environmental patterns. We can use data to shape responses to disasters, epidemics, and other challenges, by telling those involved in the response:</p>
-                <ul>
-                      <li>Where to focus their limited resources;</li>
-                      <li>How people who are most at risk are thinking about a threat;</li>
-                      <li>What information to provide to affected populations;</li>
-                      <li>and ways to proactively inform vital work to protect vulnerable children.</li>
-                </ul>
-              <p>It also allows us to link this information to governments and other partners for real-time situational awareness and problem-solving.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      );
-    }
-    if (this.state.userInfo) {
-      templates.push(
-        <App1 user={this.state.user}/>
-      );
+        <LandingPage name="landing-page" login={this.login}/>
+      )
     }
     return (
       <div className="App">
