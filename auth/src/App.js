@@ -37,10 +37,7 @@ class App extends Component {
           this.setState({
             user: user
           });
-        this.authService.getToken().then(
-          token => {
-            this.validateToken(token)
-          })
+        this.authService.getToken().then(this.validateToken)
         } else {
           this.setState({
             loginFailed: true
@@ -54,7 +51,11 @@ class App extends Component {
       }
     )
   };
-
+  redirectHome = () => {
+    this.setState({
+      loginFailed: false
+    });
+  }
   validateToken = (token) => {
     const url = '/api/maps/verify';
       fetch(url, {
