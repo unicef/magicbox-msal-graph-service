@@ -1,5 +1,5 @@
 import * as Msal from 'msal';
-import config from '../config'
+
 export default class AuthService {
   constructor() {
     let PROD_REDIRECT_URI = process.env.REACT_APP_REPLY_URL;
@@ -24,6 +24,7 @@ export default class AuthService {
       }
     );
   }
+
   login = () => {
     return this.app.loginPopup(this.applicationConfig.graphScopes).then(
       idToken => {
@@ -42,9 +43,11 @@ export default class AuthService {
       console.log(err)
     })
   };
+
   logout = () => {
     this.app.logout();
   };
+
   getToken = () => {
     return this.app.acquireTokenSilent(this.applicationConfig.graphScopes).then(
       accessToken => {

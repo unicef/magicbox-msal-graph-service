@@ -20,6 +20,12 @@
   margin: auto;
 }
 
+.App-sub-container-login-failed {
+  width: 70%;
+  margin: auto;
+  padding-top: 200px;
+}
+
 a.nav:hover,
 a.nav:active {
   background-color: #0068EA;
@@ -36,7 +42,18 @@ a.nav {
   text-decoration: none;
   cursor: pointer;
 }
+a.inline {
+  color: #282828;
+  cursor: pointer;
+  text-decoration: underline;
+}
 
+a.inline:hover,
+a.inline:active {
+  color: #0068EA;
+  cursor: pointer;
+  transition: 0.6s;
+}
 button {
     background-color: #0068EA;
     color: #ffffff;
